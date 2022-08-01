@@ -1,5 +1,5 @@
-#ifndef AP1_CLASSIFIABLE_H
-#define AP1_CLASSIFIABLE_H
+#ifndef ASS1_CLASSIFIABLE_H
+#define ASS1_CLASSIFIABLE_H
 
 //Classifiable interface
 template<class T>
@@ -18,4 +18,4 @@ class Classifiable {
 };
 
 
-#endif //AP1_CLASSIFIABLE_H
+#endif //ASS1_CLASSIFIABLE_H
