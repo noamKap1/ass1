@@ -1,7 +1,3 @@
-//
-// Created by noamn on 30/07/2022.
-//
-
 #include "Flower.h"
 #include <cmath>
 
@@ -18,6 +14,7 @@ double Flower::calcEucDistance(const Flower &other) const {
                      std::pow(this->lengthOfPetal - other.lengthOfPetal, 2)
                      + std::pow(this->widthOfPetal - other.widthOfPetal, 2));
 }
+
 //calculates the chebyshev distance
 double Flower::calcChevDistance(const Flower &flower) const {
     return std::max(std::max(std::abs(this->widthOfPetal - flower.widthOfPetal),
@@ -25,6 +22,7 @@ double Flower::calcChevDistance(const Flower &flower) const {
                     std::max(std::abs(this->lengthOfPetal - flower.lengthOfPetal),
                              std::abs(this->lengthOfSepal - flower.lengthOfSepal)));
 }
+
 //calculates the manhattan distance
 double Flower::calcManDistance(const Flower &flower) const {
     return std::abs(this->widthOfPetal - flower.widthOfPetal) +
@@ -48,7 +46,7 @@ Flower::Flower(const std::vector<std::string> &v) :
 //build and return flower vector which contains data which we get from the function
 std::vector<Flower> flowersVector(const std::vector<std::vector<std::string>> &dataVector) {
     std::vector<Flower> result;
-    for (const auto &v:dataVector) {
+    for (const auto &v: dataVector) {
         Flower iris(v);
         result.push_back(iris);
     }

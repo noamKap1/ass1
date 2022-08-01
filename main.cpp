@@ -1,7 +1,3 @@
-//
-// Created by noamn on 30/07/2022.
-//
-
 #include <vector>
 #include <iostream>
 #include "Flower.h"
@@ -19,9 +15,9 @@ int main(int argc, char *argv[]) {
     std::vector<Flower> unclassified = flowersVector(readFromCSV(path1));
     std::vector<Flower> classified = flowersVector(readFromCSV(path2));
 
-    Classifier<Flower> classifierEuc(classified, 3);
-    Classifier<Flower> classifierChev(classified, 3);
-    Classifier<Flower> classifierMan(classified, 3);
+    Classifier<Flower> classifierEuc(classified, argc);
+    Classifier<Flower> classifierChev(classified, argc);
+    Classifier<Flower> classifierMan(classified, argc);
 
     std::vector<std::string> resultEuc;
     resultEuc.reserve(unclassified.size());

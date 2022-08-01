@@ -1,7 +1,3 @@
-//
-// Created by noamn on 30/07/2022.
-//
-
 #ifndef ASS1_FLOWER_H
 #define ASS1_FLOWER_H
 

@@ -1,7 +1,3 @@
-//
-// Created by noamn on 31/07/2022.
-//
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -26,6 +22,7 @@ std::vector<std::vector<std::string>> readFromCSV(const std::string &file) {
     }
     return dataVector;
 }
+
 //Calculates the euclidean distance of each flower to the unclassified flower
 std::vector<double> lengthArrEuc(std::vector<Flower> data, Flower &unclassified) {
     std::vector<double> length;

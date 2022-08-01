@@ -1,7 +1,3 @@
-//
-// Created by noamn on 31/07/2022.
-//
-
 #ifndef AP1_CLASSIFIABLE_H
 #define AP1_CLASSIFIABLE_H
 

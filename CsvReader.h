@@ -1,7 +1,3 @@
-//
-// Created by noamn on 31/07/2022.
-//
-
 #ifndef ASS1_CSVREADER_H
 #define ASS1_CSVREADER_H
 
