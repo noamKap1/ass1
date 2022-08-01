@@ -1,61 +1,56 @@
+//
+// Created by noamn on 30/07/2022.
+//
+
 #include "Flower.h"
-#include <math.h>
+#include <cmath>
 
-Flower::Flower(double lengthOfSepal, double widthOfSepal,
-               double lengthOfPetal, double widthOfPetal, std::std::string irisType) {
-    this->
-            lengthOfPetal = lengthOfPetal;
-    this->
-            lengthOfSepal = lengthOfSepal;
-    this->
-            widthOfPetal = widthOfPetal;
-    this->
-            widthOfSepal = widthOfSepal;
-    this->
-            irisType = irisType;
 
+//Returns the flower type
+std::string Flower::getFlowerType() const {
+    return flowerType;
 }
 
-std::string Flower::getIrisType() {
-    return irisType;
+//calculates the euclidean distance
+double Flower::calcEucDistance(const Flower &other) const {
+    return std::sqrt(std::pow(this->widthOfSepal - other.widthOfSepal, 2)
+                     + std::pow(this->lengthOfSepal - other.lengthOfSepal, 2) +
+                     std::pow(this->lengthOfPetal - other.lengthOfPetal, 2)
+                     + std::pow(this->widthOfPetal - other.widthOfPetal, 2));
 }
-
-double Flower::calcEucDistance(Flower flower) {
-    return sqrt(pow(this->widthOfSepal - flower.widthOfSepal, 2)
-                + pow(this->widthOfpetal - flower.widthOfPetal, 2)
-                + pow(this->lengthOfPetal - flower.lengthOfPetal, 2)
-                + pow(this->lengthOfSepal - flower.lengthOfSepal, 2));
+//calculates the chebyshev distance
+double Flower::calcChevDistance(const Flower &flower) const {
+    return std::max(std::max(std::abs(this->widthOfPetal - flower.widthOfPetal),
+                             std::abs(this->widthOfSepal - flower.widthOfSepal)),
+                    std::max(std::abs(this->lengthOfPetal - flower.lengthOfPetal),
+                             std::abs(this->lengthOfSepal - flower.lengthOfSepal)));
 }
-
-double Flower::calcChevDistance(Flower flower) {
-    return std::max(std::abs(this->widthOfPetal - flower.widthOfPetal),
-                    std::abs(this->widthOfSepal - flower.widthOfSepal),
-                    std::abs(this->lengthOfPetal - flower.lengthOfPetal),
-                    std::abs(this->lengthOfSepal - flower.lengthOfSepal));
-}
-
-double Flower::calcManDistance(Flower flower) {
+//calculates the manhattan distance
+double Flower::calcManDistance(const Flower &flower) const {
     return std::abs(this->widthOfPetal - flower.widthOfPetal) +
            std::abs(this->widthOfSepal - flower.widthOfSepal) +
            std::abs(this->lengthOfPetal - flower.lengthOfPetal) +
-           std::abs(this->lengthOfSepal - flower.lengthOfSepal));
+           std::abs(this->lengthOfSepal - flower.lengthOfSepal);
 }
 
-Flower::Flower(std::vector<std::string> vec) {
-    if (vector.size() > 4) {
-        this->irisType = vec.at(4);
+//Construct a Flower from a vector that contains its coordinates
+Flower::Flower(const std::vector<std::string> &v) :
+        lengthOfSepal(std::stod(v.at(0))),
+        widthOfSepal(std::stod(v.at(1))),
+        widthOfPetal(std::stod(v.at(2))),
+        lengthOfPetal(std::stod(v.at(3))) {
+    if (v.size() == 5) {
+        this->flowerType = v.at(4);
     }
-    this->widthOfPetal = (std::stod(vec.at(0)));
-    this->lengthOfPetal = (std::stod(vec.at(1)));
-    this->widthOfSepal = (std::stod(vec.at(2)));
-    this->lengthOfSepal = (std::stod(vec.at(3)));
+
 }
 
-std::vector<Flower> Flower::strVecToIrisVec(std::vector<std::vector<std::string>> vec) {
-    std::vector<Flower> flVec;
-    for(std::vector<std::string> s : vec ){
-        Flower f = Flower(s);
-        flVec.push_back(f);
+//build and return flower vector which contains data which we get from the function
+std::vector<Flower> flowersVector(const std::vector<std::vector<std::string>> &dataVector) {
+    std::vector<Flower> result;
+    for (const auto &v:dataVector) {
+        Flower iris(v);
+        result.push_back(iris);
     }
-    return flVec;
+    return result;
 }

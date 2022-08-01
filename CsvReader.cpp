@@ -1,34 +1,71 @@
-#include <sstream>
+//
+// Created by noamn on 31/07/2022.
+//
+
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "CsvReader.h"
 
-std::vector<std::vector<std::string>> readFromCSV(const char *file) {
-    std::ifstream myFile(file);
+//Read from a csv file and return a data vector which contains the file lines
+std::vector<std::vector<std::string>> readFromCSV(const std::string &file) {
+    std::ifstream iStream(file);
+    if (!iStream.is_open()) throw std::runtime_error("Could not open file");
+    std::string lines, s;
+    std::vector<std::vector<std::string>> dataVector;
+    while (iStream.good()) {
+        std::getline(iStream, lines);
+        std::stringstream stringStream(lines);
 
-    std::vector<std::vector<std::string>> storedData;
-    while (myFile.good()) {
-        std::vector<std::string> line;
-        std::string s, word;
-        std::getline(myFile, s);
-        std::stringstream stst(s);
-
-        while (std::getline(stst, word, ',')) {
-            line.push_back(word);
+        std::vector<std::string> row;
+        while (std::getline(stringStream, s, ',')) {
+            row.push_back(s);
         }
-        if (!line.empty()) {
-            storedData.push_back(line);
-        }
+        if (!row.empty())
+            dataVector.push_back(row);
     }
-    return storedData;
+    return dataVector;
+}
+//Calculates the euclidean distance of each flower to the unclassified flower
+std::vector<double> lengthArrEuc(std::vector<Flower> data, Flower &unclassified) {
+    std::vector<double> length;
+    for (int i = 0; i < data.size(); i++) {
+        length.push_back(data[i].calcEucDistance(unclassified));
+    }
+    return length;
 }
 
-void writeToCSV(std::vector<std::string> vec, std::string) {
-    std::ofstream file;
-    file.open(s, std::ios_base::app);
-    for (const std::string s: vec) {
-        file << s << std::endl;
+//Calculates the manhattan distance of each flower to the unclassified flower
+std::vector<double> lengthArrMan(std::vector<Flower> data, Flower &unclassified) {
+    std::vector<double> length;
+    for (int i = 0; i < data.size(); i++) {
+        length.push_back(data[i].calcManDistance(unclassified));
     }
+    return length;
 }
 
+//Calculates the chebyshev distance of each flower to the unclassified flower
+std::vector<double> lengthArrChev(std::vector<Flower> data, Flower &unclassified) {
+    std::vector<double> length;
+    for (int i = 0; i < data.size(); i++) {
+        length.push_back(data[i].calcChevDistance(unclassified));
+    }
+    return length;
+}
 
+//Returns vector which contains all the flower types
+std::vector<std::string> typeArr(std::vector<Flower> data) {
+    std::vector<std::string> types;
+    for (int i = 0; i < data.size(); i++) {
+        types.push_back(data[i].getFlowerType());
+    }
+    return types;
+}
+
+//Write to a csv file
+void writeToCSV(const std::string &file, const std::vector<std::string> &dataVector) {
+    std::ofstream oStream(file);
+    for (const std::string &line: dataVector) {
+        oStream << line << std::endl;
+    }
+}
