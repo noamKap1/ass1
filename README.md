@@ -11,4 +11,8 @@ This proccess we do for every unclassified object, and three times, for the thre
 We write the newly classified objects to three different distance methods csv's, according to the expected output rules.
 
 # compiling and running:
+compile with the command:
+g++ *.cpp -std=c++11
+and then run with the command:
+./a.out 5
 
