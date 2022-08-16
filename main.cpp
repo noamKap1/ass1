@@ -4,7 +4,7 @@
 #include "CsvReader.h"
 #include "Classifier.h"
 
-//Classify unclassified flowers which we read from files and the writes the Classified flowers to
+//Classify unclassified flowers which we read s files and the writes the Classified flowers to
 //three files according to the length calculation way
 int main(int argc, char *argv[]) {
     std::string path1 = "Unclassified.csv";
@@ -14,11 +14,9 @@ int main(int argc, char *argv[]) {
     std::string path5 = "manhattan_output.csv";
     std::vector<Flower> unclassified = flowersVector(readFromCSV(path1));
     std::vector<Flower> classified = flowersVector(readFromCSV(path2));
-
-    Classifier<Flower> classifierEuc(classified, argc);
-    Classifier<Flower> classifierChev(classified, argc);
-    Classifier<Flower> classifierMan(classified, argc);
-
+    Classifier<Flower> classifierEuc(classified, std::stoi(argv[1]));
+    Classifier<Flower> classifierChev(classified, std::stoi(argv[1]));
+    Classifier<Flower> classifierMan(classified, std::stoi(argv[1]));
     std::vector<std::string> resultEuc;
     resultEuc.reserve(unclassified.size());
     for (auto iris: unclassified) {

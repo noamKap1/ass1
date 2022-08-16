@@ -10,7 +10,7 @@
 
 //Classifier class
 template<class T>
-class Classifier {
+class Classifier{
 private:
     //List of the classifiables
     std::vector<T> dataVector;
@@ -66,6 +66,15 @@ public:
         }
         return type;
     }
+
+    Classifier &operator=(const Classifier &) = default;
+
+    ~Classifier() = default;
+
+    Classifier(const Classifier &o) = default;
+
+    Classifier(Classifier &&o) noexcept = default;
+
 };
 
 #endif //ASS1_CLASSIFIER_H

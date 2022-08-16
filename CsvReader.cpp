@@ -3,10 +3,12 @@
 #include <sstream>
 #include "CsvReader.h"
 
-//Read from a csv file and return a data vector which contains the file lines
+//Read s a csv file and return a data vector which contains the file lines
 std::vector<std::vector<std::string>> readFromCSV(const std::string &file) {
     std::ifstream iStream(file);
-    if (!iStream.is_open()) throw std::runtime_error("Could not open file");
+    if (!iStream.is_open()){
+        std::cout << "Could not open file" << std::endl;
+    }
     std::string lines, s;
     std::vector<std::vector<std::string>> dataVector;
     while (iStream.good()) {
@@ -65,4 +67,15 @@ void writeToCSV(const std::string &file, const std::vector<std::string> &dataVec
     for (const std::string &line: dataVector) {
         oStream << line << std::endl;
     }
+}
+
+//Splits the string and puts the cells into the vector
+std::vector<std::string> stringSplitterIntoVector(const std::string &s, const char c) {
+    std::string string;
+    std::stringstream stringstream(s);
+    std::vector<std::string> v;
+    while (std::getline(stringstream, string, c)) {
+        v.push_back(string);
+    }
+    return v;
 }
