@@ -11,9 +11,20 @@ This proccess we do for every unclassified object, and three times, for the thre
 We write the newly classified objects to three different distance methods csv's, according to the expected output rules.
 
 # compiling and running:
-first the unclassified and classified file you gave us should be placed cmake-build-debug folder in the assigment folder.
+write mkdir ass1.
+write cd ass1.
+first the unclassified and classified file you gave us should be placed with the cmake-build-debug folder in the assigment folder and the files we sent uploaded.
 compile with the command:
 g++ *.cpp -std=c++11
 and then run with the command:
 ./a.out 5
+(in our computer you need to refresh too)
 
+the changes we made:
+we had a line with include which we deleted, a typing error which led the a compilation error..
+we had an error in std::runtime_error which we changed, a syntax error which led the a compilation error.
+we had a mistake which we used argc and not argv[1] in the places which we used the given argument.
+
+Our mistake was that we didn’t  run the program properly on linux (because of poor understanding) and therefore we missed this errors.
+In our ide the program ran as necessary.
+We hope this mistakes will not have a big affect on our grade and we are sorry for the trouble.
