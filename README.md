@@ -20,6 +20,7 @@ and then run with the command:
 ./a.out 5
 (in our computer you need to refresh too)
 
+# changes
 the changes we made:
 we had a line with include which we deleted, a typing error which led the a compilation error..
 we had an error in std::runtime_error which we changed, a syntax error which led the a compilation error.
