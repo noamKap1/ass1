@@ -68,14 +68,3 @@ void writeToCSV(const std::string &file, const std::vector<std::string> &dataVec
         oStream << line << std::endl;
     }
 }
-
-//Splits the string and puts the cells into the vector
-std::vector<std::string> stringSplitterIntoVector(const std::string &s, const char c) {
-    std::string string;
-    std::stringstream stringstream(s);
-    std::vector<std::string> v;
-    while (std::getline(stringstream, string, c)) {
-        v.push_back(string);
-    }
-    return v;
-}
