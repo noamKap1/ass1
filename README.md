@@ -21,11 +21,11 @@ and then run with the command:
 (in our computer you need to refresh too)
 
 # changes
-the changes we made:
-We had a line with include which we deleted. This line was a typing error which led to a compilation error.
-We had an error in std::runtime_error which we changed. This line was a syntax error which led to a compilation error.
-We had a mistake which we used argc and not argv[1] in the places which we used the given argument. This little error ruined our reading process.
+the changes we made:<br />
+We had a line with include which we deleted. This line was a typing error which led to a compilation error.<br />
+We had an error in std::runtime_error which we changed. This line was a syntax error which led to a compilation error.<br />
+We had a mistake which we used argc and not argv[1] in the places which we used the given argument. This little error ruined our reading process.<br />
 
-Our mistake was that we didn’t  run the program properly on linux (because of poor understanding) and therefore we missed this errors.
-In our IDE (Clion) the program ran as necessary.
+Our mistake was that we didn’t  run the program properly on linux (because of poor understanding) and therefore we missed this errors.<br />
+In our IDE (Clion) the program ran as necessary.<br />
 We hope this mistakes will not have a big affect on our grade and we are sorry for the trouble.
